@@ -15,7 +15,7 @@ global.timestamp = {
 const PORT = process.env.PORT || 3000
 let opts = yargs(process.argv.slice(2)).exitProcess(false).parse()
 global.opts = Object.freeze({...opts})
-global.prefix = new RegExp('^[' + (opts['prefix'] || '\\/i!#$%\\-+£¢€¥^°=¶∆×÷π√✓©®:;?&.') + ']')
+global.prefix = new RegExp('^[' + (opts['prefix'] || '\\/1234567890QWERTYUIOPASDFGHJKLZXCVBNM,.+×÷=%_€£¥₩@#$/^&*()-:;!?') + ']')
 
 global.DATABASE = new (require('./lib/database'))(opts._[0] ? opts._[0] + '_' : '' + 'database.json', null, 2)
 if (!global.DATABASE.data.users) global.DATABASE.data = {
