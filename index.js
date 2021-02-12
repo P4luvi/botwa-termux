@@ -208,6 +208,22 @@ global.dfail = (type, m, conn) => {
   msg && conn.reply(m.chat, msg, m)
 }
 
+const botNumber = client.user.jid
+			const ownerNumber = ["6287871537199@s.whatsapp.net"] // replace this with your number
+			const isGroup = from.endsWith('@g.us')
+			const sender = isGroup ? mek.participant : mek.key.remoteJid
+			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
+			const groupName = isGroup ? groupMetadata.subject : ''
+			const groupId = isGroup ? groupMetadata.jid : ''
+			const groupMembers = isGroup ? groupMetadata.participants : ''
+			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+			const isGroupAdmins = groupAdmins.includes(sender) || false
+			const isWelkom = isGroup ? welkom.includes(from) : false
+			const isNsfw = isGroup ? nsfw.includes(from) : false
+			const isSimi = isGroup ? samih.includes(from) : false
+			const isOwner = ownerNumber.includes(sender)
+			const isUrl = (url) =>
 
 if (opts['test']) process.stdin.on('data', chunk => conn.emit('message-new', { text: chunk.toString() }))
 else conn.connect().then(() => {
